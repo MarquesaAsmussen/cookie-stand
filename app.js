@@ -9,23 +9,48 @@ let hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm
 // }
 
 
+//--------------------------------Constructor----------------------------//
+// make a constructor to replace all instances of stores 
+
+function Store(storeLocation, minHourlyCust, maxHourlyCust, avgCookieSale) {
+  this.storeLocation = storeLocation;
+  this.minHourlyCust = minHourlyCust;
+  this.maxHourlyCust = maxHourlyCust;
+  this.avgCookieSale = avgCookieSale;
+  this.avgCustPerHour = [];
+  this.avgCookiesPerHour = [];
+  // this.totalCookieSales = [];
+}
+
+//---------------------------Prototype Methods------------------------//
+
+//--------------------------Store Object Literals--------------------//
 const storeSeattle = {
   storeLocation: 'Seattle',
   minHourlyCust: 23,
   maxHourlyCust: 65,
   avgCookieSale: 6.3,
   avgCustPerHour: [],
+  avgCookiesPerHour: [],
+  dailySales: 0,
+  
   calcAvgCust: function() {
     this.avgCustPerHour = randomCust(23, 65)
   },
-  avgCookiesPerHour: [],
-  calcAvgCookiesPerHour: function () {
+  
+  calcAvgCookiesPerHour: function() {
     for (let i = 0; i < hoursOfOperation.length; i++) {
       this.avgCookiesPerHour.push(Math.floor(this.avgCookieSale * this.avgCustPerHour[i]))
     }
-    // console.log(this.avgCookiesPerHour)
   },
+
+  calcDailySales: function() {
+    this.dailySales = totalCookieSales(this.avgCookiesPerHour)   
+  }
 }
+
+
+
 
 const storeTokyo = {
   storeLocation: 'Tokyo',
@@ -44,6 +69,10 @@ const storeTokyo = {
     // this.avgCookiesPerHour = hourlyCookies(this.avgCustPerHour, )
     console.log(this.avgCookiesPerHour)
   },
+  dailySales: 0,
+  calcDailySales: function() {
+    this.dailySales = totalCookieSales(this.avgCookiesPerHour)    
+  }
 }
 
 const storeDubai = {
@@ -63,6 +92,10 @@ const storeDubai = {
     // this.avgCookiesPerHour = hourlyCookies(this.avgCustPerHour, )
     console.log(this.avgCookiesPerHour)
   },
+  dailySales: 0,
+  calcDailySales: function() {
+    this.dailySales = totalCookieSales(this.avgCookiesPerHour)    
+  }
 }
 
 const storeParis = {
@@ -82,6 +115,10 @@ const storeParis = {
     // this.avgCookiesPerHour = hourlyCookies(this.avgCustPerHour, )
     console.log(this.avgCookiesPerHour)
   },
+  dailySales: 0,
+  calcDailySales: function() {
+    this.dailySales = totalCookieSales(this.avgCookiesPerHour)    
+  }
 }
 
 const storeLima = {
@@ -96,12 +133,18 @@ const storeLima = {
   avgCookiesPerHour: [],
   calcAvgCookiesPerHour: function () {
     for (let i = 0; i < hoursOfOperation.length; i++) {
-      this.avgCookiesPerHour.push(Math.floor(this.avgCookieSale * this.avgCustPerHour[i]))
+      this.avgCookiesPerHour.push(Math.floor(this.avgCookieSale * this.avgCustPerHour[i]));
     }
     // this.avgCookiesPerHour = hourlyCookies(this.avgCustPerHour, )
-    console.log(this.avgCookiesPerHour)
+    console.log(this.avgCookiesPerHour);
   },
+  dailySales: 0,
+  calcDailySales: function() {
+    this.dailySales = totalCookieSales(this.avgCookiesPerHour)    
+  }
 }
+
+//-------------------------------Global Functions---------------------//
 
 function randomCust(a, b) {
   let c = [];
@@ -114,10 +157,20 @@ function randomCust(a, b) {
   return c;
 }
 
-function hourlyCookies(a, b) {
-  // console.log(a, b)
-  let cookiesPerHour = Math.floor(a * b); 
+// function hourlyCookies(a, b) {
+//   // console.log(a, b)
+//   let cookiesPerHour = Math.floor(a * b);
+
+// }
+
+function totalCookieSales() {
+  let daysTotalSales = 0;
+  for (let i = 0; i < hoursOfOperation.length; i++) {
+    daysTotalSales = daysTotalSales + this.avgCookiesPerHour([i]);
+  }
 }
+
+//--------------------------------Call Functions---------------------------//
 
 storeSeattle.calcAvgCust();
 storeTokyo.calcAvgCust();
@@ -130,6 +183,12 @@ storeTokyo.calcAvgCookiesPerHour();
 storeDubai.calcAvgCookiesPerHour();
 storeParis.calcAvgCookiesPerHour();
 storeLima.calcAvgCookiesPerHour();
+
+storeSeattle.calcDailySales();
+storeTokyo.calcDailySales();
+storeDubai.calcDailySales();
+storeParis.calcDailySales();
+storeLima.calcDailySales();
 
 const storeArray = [storeSeattle, storeTokyo, storeDubai, storeParis, storeLima];
 
