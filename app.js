@@ -10,7 +10,6 @@ const tableElem = document.createElement('table');
 storeSectionElem.appendChild(tableElem);
 // const formElem = document.getElementById('form');
 
-// const allStores = [storeSeattle, storeTokyo, storeDubai, storeParis, storeLima];
 const storeArray = [];
 
 const storeSeattle = new Store('Seattle', 23, 65, 6.3);
@@ -18,9 +17,6 @@ const storeTokyo = new Store('Tokyo', 3, 24, 1.2);
 const storeDubai = new Store('Dubai', 11, 38, 3.7);
 const storeParis = new Store('Paris', 20, 38, 2.3);
 const storeLima = new Store('Lima', 2, 16, 4.6);
-
-// const storeChicago = new Store('Lima', 2, 16, 4.6);
-
 
 //--------------------------------Constructor----------------------------//
 // make a constructor to replace all instances of stores 
@@ -30,40 +26,32 @@ function Store(storeLocation, minHourlyCust, maxHourlyCust, avgCookieSale) {
   this.minHourlyCust = minHourlyCust;
   this.maxHourlyCust = maxHourlyCust;
   this.avgCookieSale = avgCookieSale;
-  // maybe move avg cust per hour?
   this.avgCustPerHour = [];
   this.avgCookiesPerHour = [];
-  // maybe move daily sales?
   this.dailySales = 0;
 
-  // Store.allStores.push(this);
   storeArray.push(this);
   console.log(storeArray);
 }
 
-// Store.allStores = [];
-// Store.storeArray = [];
-
 //---------------------------Prototype Methods------------------------//
 
 Store.prototype.calcAvgCust = function () {
-  // this.avgCustPerHour = `${randomCust(this.minHourlyCust, this.maxHourlyCust)}`;
-  // this.avgCustPerHour.push(randomCust(this.minHourlyCust, this.maxHourlyCust));
   return Math.floor(Math.random() * (this.maxHourlyCust - this.minHourlyCust + 1) + this.minHourlyCust)
-};
+}
 
 Store.prototype.calcAvgCookiesPerHour = function () {
   for (let i = 0; i < hoursOfOperation.length; i++) {
     this.avgCookiesPerHour.push(Math.floor(this.avgCookieSale * this.calcAvgCust()))
   }
-};
+}
 
 Store.prototype.calcDailySales = function () {
   this.dailySales = 0;
   for (let i = 0; i < hoursOfOperation.length; i++) {
     this.dailySales += this.avgCookiesPerHour[i];
   }
-};
+}
 
 //-------------------------Global Functions--------------------------//
 
@@ -146,32 +134,6 @@ function renderFooter() {
   let globalGrandDailyTotalElem = document.createElement('td');
   globalGrandDailyTotalElem.textContent = globalGrandTotal;
   footerElem.appendChild(globalGrandDailyTotalElem);
-
-  // td for final cell grand total
-  // let globalGrandTotal = 0;
-  // let x = [];
-  // for (let i = 0; i < storeArray.length; i++) {
-    // globalGrandTotal = globalGrandTotal + storeArray[i].dailySales;
-    // x.push(globalGrandTotal);
-    // console.log(x);
-    // console.log(x[x.length - 1]);
-    // let y = (x[x.length - 1])
-    // console.log(y);
-    // console.log(globalGrandTotal[globalGrandTotal.length - 1]);
-    // if (i == storeArray[storeArray.length - 1]) {
-      // return y;
-      // console.log(y);
-    // }
-    // let globalGrandDailyTotalElem = document.createElement('td');
-    // globalGrandDailyTotalElem.textContent = y;
-    // footerElem.appendChild(globalGrandDailyTotalElem);
-  // let globalGrandTotal = 0;
-  // for (let i = 0; i < hoursOfOperation.length; i++) {
-  //   globalGrandTotal += hoursOfOperation[i].avgCookiesPerHour;
-  //   let globalGrandDailyTotalElem = document.createElement('td');
-  //   globalGrandDailyTotalElem.textContent = globalGrandTotal;
-  //   footerElem.appendChild(globalGrandDailyTotalElem);
-  // }
 }
 
 renderFooter();
