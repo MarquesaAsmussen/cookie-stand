@@ -77,7 +77,6 @@ function renderHeader() {
   headerElem.appendChild(locationDailyTotalElem);
 }
 
-renderHeader();
 
 // function that renders and populates table body
 
@@ -103,9 +102,6 @@ Store.prototype.renderStore = function () {
 }
 // storeSeattle.renderStore();
 
-for (let i = 0; i < storeArray.length; i++) {
-  storeArray[i].renderStore()
-}
 
 // make a function to create a header row for the footer
 
@@ -134,6 +130,26 @@ function renderFooter() {
   let globalGrandDailyTotalElem = document.createElement('td');
   globalGrandDailyTotalElem.textContent = globalGrandTotal;
   footerElem.appendChild(globalGrandDailyTotalElem);
+}
+
+
+// -----------------------------click handler and event listener-------------------------//
+
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log(e);
+  
+
+}
+
+
+
+// ------------------------------Render the Table--------------------------------//
+
+renderHeader();
+
+for (let i = 0; i < storeArray.length; i++) {
+  storeArray[i].renderStore()
 }
 
 renderFooter();
