@@ -15,27 +15,26 @@
     <main>
       <form id="form">
         <fieldset>
-          <label>Thrill Level
-            <select name="thrill-level">
-              <option value="high">High</option>
-              <option value="moderate">Moderate</option>
-              <option value="easy">Easy</option>
-            </select>
+          <legend>Input New Cookie Stand</legend>
+          <label>Location
+            <input name="location" type="text">
           </label>
-          <label>Activity Level
-            <select name="activity-level">
-              <option value="hard-core">Hard Core</option>
-              <option value="active">Active</option>
-              <option value="leisurely">Leisurely</option>
-            </select>
+          <label>Minimum Hourly Customers
+            <input name="minCust" type="number">
+          </label>
+          <label>Maximum Hourly Customers
+            <input name="maxCust" type="number">
+          </label>
+          <label>Average Cookie Sale
+            <input name="avgSale" type="number">
           </label>
         </fieldset>
+        <button type="submit">submit</button>
       </form>
-      <button type="submit">Find Your Adventure</button>
       <section id="store"></section>
     </main>
     <footer>
-      
+    
     </footer>
     <script src="app.js"></script>
   </body>

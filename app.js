@@ -9,14 +9,15 @@ const storeSectionElem = document.getElementById('store');
 const tableElem = document.createElement('table');
 storeSectionElem.appendChild(tableElem);
 const formDivElem = document.getElementById('form');
+// tableElem.appendChild(formDivElem);
 
 const storeArray = [];
 
-const storeSeattle = new Store('Seattle', 23, 65, 6.3);
-const storeTokyo = new Store('Tokyo', 3, 24, 1.2);
-const storeDubai = new Store('Dubai', 11, 38, 3.7);
-const storeParis = new Store('Paris', 20, 38, 2.3);
-const storeLima = new Store('Lima', 2, 16, 4.6);
+// const storeSeattle = new Store('Seattle', 23, 65, 6.3);
+// const storeTokyo = new Store('Tokyo', 3, 24, 1.2);
+// const storeDubai = new Store('Dubai', 11, 38, 3.7);
+// const storeParis = new Store('Paris', 20, 38, 2.3);
+// const storeLima = new Store('Lima', 2, 16, 4.6);
 
 //--------------------------------Constructor----------------------------//
 // make a constructor to replace all instances of stores 
@@ -77,7 +78,7 @@ function renderHeader() {
   headerElem.appendChild(locationDailyTotalElem);
 }
 
-renderHeader();
+// renderHeader();
 
 // function that renders and populates table body
 
@@ -103,9 +104,9 @@ Store.prototype.renderStore = function () {
 }
 // storeSeattle.renderStore();
 
-for (let i = 0; i < storeArray.length; i++) {
-  storeArray[i].renderStore()
-}
+// for (let i = 0; i < storeArray.length; i++) {
+//   storeArray[i].renderStore()
+// }
 
 // make a function to create a header row for the footer
 
@@ -134,6 +135,56 @@ function renderFooter() {
   let globalGrandDailyTotalElem = document.createElement('td');
   globalGrandDailyTotalElem.textContent = globalGrandTotal;
   footerElem.appendChild(globalGrandDailyTotalElem);
+}
+
+
+// -----------------------------click handler and event listener-------------------------//
+
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log(e);
+  // function Store(storeLocation, minHourlyCust, maxHourlyCust, avgCookieSale) {
+  let storeLocation = e.target.location.value;
+  let minHourlyCust = e.target.minCust.value;
+  let maxHourlyCust = e.target.maxCust.value;
+  let avgCookieSale = e.target.avgSale.value;
+
+  let newStore = new Store(storeLocation, minHourlyCust, maxHourlyCust, avgCookieSale);
+  newStore.calcAvgCookiesPerHour();
+  newStore.calcDailySales();  
+  // newStore.renderStore();
+
+  // clear table to prepare to re-render
+  tableElem.innerHTML = '';
+
+
+  renderHeader();
+  for (let i = 0; i < storeArray.length; i++) {
+    storeArray[i].renderStore()
+  }
+  renderFooter();
+
+  // clear form after 'submit'
+  e.target.reset();
+}
+
+formDivElem.addEventListener('submit', handleSubmit);
+
+
+const storeSeattle = new Store('Seattle', 23, 65, 6.3);
+const storeTokyo = new Store('Tokyo', 3, 24, 1.2);
+const storeDubai = new Store('Dubai', 11, 38, 3.7);
+const storeParis = new Store('Paris', 20, 38, 2.3);
+const storeLima = new Store('Lima', 2, 16, 4.6);
+
+
+
+// ------------------------------Render the Table--------------------------------//
+
+renderHeader();
+
+for (let i = 0; i < storeArray.length; i++) {
+  storeArray[i].renderStore()
 }
 
 renderFooter();
