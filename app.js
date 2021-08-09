@@ -8,7 +8,7 @@ let hoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm
 const storeSectionElem = document.getElementById('store');
 const tableElem = document.createElement('table');
 storeSectionElem.appendChild(tableElem);
-// const formElem = document.getElementById('form');
+const formDivElem = document.getElementById('form');
 
 const storeArray = [];
 
