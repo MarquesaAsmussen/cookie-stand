@@ -1,29 +1,147 @@
-header
+/* ----------------------------------GLOBAL-------------------------------- */
+/* body {
+  margin: 50px;
+} */
 
-ul
+/* -----------------------------HEADER---------------------------------------- */
 
-
-
-#A {
-  background-color: tan;
-} 
-
-#B {
-  background-color: teal;
+header {
+  color: white;
+  background-color: rgb(88, 85, 85);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-#C  {
+#header-contents {
+  display: flex;
+  width: 100%;
+  margin-left: 80px;
+}
+
+#header-contents img {
+  height: 70px;
+  width: 200px;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* margin-left: 20px; */
+  justify-content: flex-start;
+}
+
+a {
+  /* width: 100%; */
+  font-family: sans-serif;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+/* --------------------------BODY------------------------------- */
+
+/* body {
+  width: 100%;
+  justify-content: center;
+} */
+
+main {
   background-color: seagreen;
+  /* display: flex;
+  width: 960px;
+  justify-content: center; */
 }
 
-#D {
-  background-color: burlywood;
+/* --------------------------HERO IMAGE------------------------------- */
+
+#cookie-h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: xx-large;
 }
 
-#E {
-  background-color: rosybrown;
+
+
+
+#hero-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-#F {
-  background-color: palegoldenrod;
+/* --------------------3 IMAGES---------------------------------------- */
+
+#three-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#image-triplets {
+  display: flex;
+  width: 960px;
+  justify-content: space-between;
+}
+
+/* ------------------------FLOATED IMAGE AND <P>--------------------------- */
+
+#section3 {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 30px; */
+  /* width: 960px; */
+  /* height: 400px; */
+
+}
+
+#image-and-article {
+  display: flex;
+  width: 960px;
+  justify-content: space-between;
+
+}
+
+#p-image {
+  margin-top: 30px;
+  width: 480px;
+  height: 400px;
+}
+
+article {
+  font-family: sans-serif;
+  margin-top: 30px;
+  width: 450px;
+}
+
+#location-h3 {
+  font-size: xx-large;
+}
+
+ul {
+  font-size: x-large;
+  height: 400px;
+  overflow: auto;
+}
+
+/* button {
+  color: white;
+  background-color: black;
+  width: 140px;
+  height: 35px;
+}
+
+button:hover {
+  background-color: gray;
+  transition: 350ms;
+} */
+
+
+/* -----------------------------FOOTER------------------------------------ */
+
+footer {
+  margin-top: 30px;
+  background-color: rgb(88, 85, 85);
+  height: 150px;
 }
